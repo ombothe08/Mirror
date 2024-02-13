@@ -15,7 +15,8 @@ public:
     void setX(double newX);
     void setY(double newY);
     void setZ(double newZ);
-
+    bool operator<(const Point3D &other) const;
+    
 private:
     double mX;
     double mY;

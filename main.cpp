@@ -11,20 +11,17 @@ typedef vector<Triangle> Triangles;
 
 int main()
 {
-    std::string inputFilePath = "stlFiles/cube.stl";
-    std::string outputFilePath = "textFiles/Cube1.txt";  
+    std::string inputFilePath = "stlFiles/cube1.stl";
+    std::string outputFilePath = "textFiles/original.txt";  
 
     Shapes3D::STLReader stlReader;
-    mirror m;
-    // Read triangulation data from the input STL file
-    Triangulation triangulation = stlReader.readSTL(inputFilePath);
-
     Shapes3D::STLWriter stlWriter;
-    // Write triangulation data to the output text file
+    Shapes3D::mirror m;
 
+
+    Triangulation triangulation = stlReader.readSTL(inputFilePath);
     vector<Point3D> one=stlWriter.writeSTL(outputFilePath, triangulation);
     
-    //vector<Point3D> one = m.readFile(); 
     vector<Point3D> second = m.getPlane(one);
     m.writePlane(second);
     vector<Point3D> third = m.reflectPoint(second);
